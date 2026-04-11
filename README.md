@@ -1,17 +1,21 @@
-# swappio
+# Swapio
 
-A new Flutter project.
+Estructura base para una aplicación móvil en Flutter organizada por módulos.
 
-## Getting Started
+## Estructura principal
 
-This project is a starting point for a Flutter application.
+- `lib/core/`: configuración global, utilidades, servicios, tema y constantes.
+- `lib/data/`: modelos, repositorios y fuentes de datos.
+- `lib/features/`: módulos funcionales como auth, home y profile.
+- `lib/shared/`: widgets y componentes reutilizables.
+- `lib/routes/`: configuración de navegación.
+- `assets/`: imágenes, íconos y fuentes.
 
-A few resources to get you started if this is your first Flutter project:
+## Siguiente paso
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Crear el proyecto Flutter real si todavía no existe:
+   ```bash
+   flutter create .
+   ```
+2. Revisar `pubspec.yaml`.
+3. Empezar por `lib/main.dart`.
