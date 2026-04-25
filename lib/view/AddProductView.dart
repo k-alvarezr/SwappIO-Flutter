@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../viewModel/AppServicesViewModel.dart';
+import '../viewModel/ConnectivityServiceViewModel.dart';
 import 'shared/AppColorsView.dart';
 import 'shared/AppRoutesView.dart';
 import 'shared/GlassPanelView.dart';
@@ -60,6 +61,23 @@ class _AddProductViewState extends State<AddProductView> {
 
   Future<void> _submit() async {
     setState(() => _error = null);
+
+    // --- INICIO ESCENARIO OFFLINE: Bloqueo de acción ---
+    final connectivity = ConnectivityServiceViewModel();
+    bool hasInternet = await connectivity.isConnected;
+
+    if (!hasInternet) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('No internet connection. You cannot publish products offline.'),
+          backgroundColor: Colors.red,
+          duration: Duration(seconds: 4),
+        ),
+      );
+      return;
+    }
+    // --- FIN ESCENARIO OFFLINE ---
 
     if (_title.text.trim().isEmpty || _price.text.trim().isEmpty || _location.text.trim().isEmpty) {
       setState(() => _error = 'Por favor, llena el título, el precio y la ubicación.');
@@ -154,9 +172,9 @@ class _AddProductViewState extends State<AddProductView> {
         title: const Text('Como publicar'),
         content: const Text(
           '1. Agrega al menos una foto.\n'
-          '2. Completa titulo, precio y ubicacion.\n'
-          '3. Toca el mapa para fijar una ubicacion aproximada.\n'
-          '4. Publica la prenda para verla en tus listados.',
+              '2. Completa titulo, precio y ubicacion.\n'
+              '3. Toca el mapa para fijar una ubicacion aproximada.\n'
+              '4. Publica la prenda para verla en tus listados.',
         ),
         actions: [
           TextButton(
@@ -362,18 +380,18 @@ class _AddProductViewState extends State<AddProductView> {
                       onPressed: _isLoading ? null : _submit,
                       child: _isLoading
                           ? const SizedBox(
-                              width: 22,
-                              height: 22,
-                              child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
-                            )
+                        width: 22,
+                        height: 22,
+                        child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                      )
                           : const Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('List Item'),
-                                SizedBox(width: 8),
-                                Icon(Icons.arrow_forward_rounded),
-                              ],
-                            ),
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('List Item'),
+                          SizedBox(width: 8),
+                          Icon(Icons.arrow_forward_rounded),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -406,23 +424,17 @@ class _PhotoSlot extends StatelessWidget {
           child: filled
               ? const Icon(Icons.check_circle_rounded, color: Colors.white, size: 30)
               : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.add_a_photo_outlined, color: AppColorsView.primary),
-                    if (label != null) ...[
-                      const SizedBox(height: 6),
-                      Text(label!, style: const TextStyle(fontSize: 12, color: AppColorsView.primary)),
-                    ],
-                  ],
-                ),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.add_a_photo_outlined, color: AppColorsView.primary),
+              if (label != null) ...[
+                const SizedBox(height: 6),
+                Text(label!, style: const TextStyle(fontSize: 12, color: AppColorsView.primary)),
+              ],
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
-
-
-
-
-

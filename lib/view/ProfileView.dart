@@ -187,6 +187,15 @@ class ProfileView extends StatelessWidget {
               iconBackground: const Color(0x1AE11D48),
               onTap: () => Navigator.of(context).pushNamed(AppRoutesView.favorites),
             ),
+                const SizedBox(height: 12),
+                ActivityOptionCardView(
+                  title: 'Dashboard de Negocio',
+                  subtitle: 'Métricas BQ6, BQ9 y BQ10',
+                  icon: Icons.analytics_rounded,
+                  iconColor: Colors.indigo, // Color sugerido para diferenciarlo
+                  iconBackground: Colors.indigo.withOpacity(0.1),
+                  onTap: () => Navigator.of(context).pushNamed(AppRoutesView.reports),
+                ),
               ],
             ),
           ),

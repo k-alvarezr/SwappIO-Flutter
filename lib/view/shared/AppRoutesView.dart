@@ -17,6 +17,7 @@ import '../ProductDetailView.dart';
 import '../ProfileView.dart';
 import '../SellerProfileView.dart';
 import '../SellView.dart';
+import '../ReportsDashboardView.dart';
 
 class AppRoutesView {
   static const String root = '/';
@@ -37,6 +38,7 @@ class AppRoutesView {
   static const String dropOffMap = '/drop-off-map';
   static const String chatList = '/chat-list';
   static const String chatDetail = '/chat-detail';
+  static const String reports = '/reports';
 
   static final services = AppServicesViewModel.instance;
 
@@ -164,6 +166,8 @@ class AppRoutesView {
           builder: (_) => const DropoffMapView(),
           settings: settings,
         );
+      case reports:
+        return MaterialPageRoute(builder: (_) => const ReportsDashboardView());
       case chatList:
         return MaterialPageRoute<void>(
           builder: (_) => const ChatListView(),
