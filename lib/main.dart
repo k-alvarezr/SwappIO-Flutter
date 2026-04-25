@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-import 'core/theme/app_theme.dart';
-import 'routes/app_routes.dart';
+import 'view/AppThemeView.dart';
+import 'view/shared/AppRoutesView.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -23,9 +28,11 @@ class SwapioApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Swapio',
-      theme: AppTheme.lightTheme,
-      initialRoute: AppRoutes.initialRoute,
-      onGenerateRoute: AppRoutes.onGenerateRoute,
+      theme: AppThemeView.lightTheme,
+      initialRoute: AppRoutesView.initialRoute,
+      onGenerateRoute: AppRoutesView.onGenerateRoute,
     );
   }
 }
+
+
