@@ -99,7 +99,7 @@ class _AddProductViewState extends State<AddProductView> {
       return;
     }
     if (!_hasMapSelection) {
-      setState(() => _error = 'Selecciona una ubicacion valida en el mapa.');
+      setState(() => _error = 'Select a valid location on the map.');
       return;
     }
 
