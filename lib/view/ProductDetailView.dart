@@ -275,7 +275,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                                       children: [
                                         Icon(Icons.place_rounded, size: 36, color: AppColorsView.primary),
                                         SizedBox(height: 8),
-                                        Text('Mapa mock del punto de encuentro'),
+                                        Text('Mock map of the meeting point'),
                                       ],
                                     ),
                                   ),
@@ -302,7 +302,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                                         children: [
                                           Icon(Icons.star_rounded, size: 14, color: Color(0xFFFFC107)),
                                           SizedBox(width: 4),
-                                          Text('Vendedor', style: TextStyle(color: AppColorsView.textMuted, fontSize: 12)),
+                                          Text('Seller', style: TextStyle(color: AppColorsView.textMuted, fontSize: 12)),
                                         ],
                                       ),
                                     ],
@@ -410,7 +410,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                                 try {
                                   await _productRepository.deleteProduct(product.id);
                                   if (!mounted) return;
-                                  _showMessage('Publicacion eliminada.');
+                                  _showMessage('Post deleted.');
                                   Navigator.of(context).pop();
                                 } catch (error) {
                                   if (!mounted) return;
@@ -539,7 +539,7 @@ class _MockCheckoutSheetState extends State<_MockCheckoutSheet> {
   final _cardController = TextEditingController(text: '4242 4242 4242 4242');
   final _expiryController = TextEditingController(text: '12/28');
   final _cvvController = TextEditingController(text: '123');
-  String _paymentMethod = 'Tarjeta de credito';
+  String _paymentMethod = 'Credit Card';
   int _installments = 1;
 
   @override
@@ -570,7 +570,7 @@ class _MockCheckoutSheetState extends State<_MockCheckoutSheet> {
                   children: [
                     const Expanded(
                       child: Text(
-                        'Pasarela de pago mock',
+                        'Mock payment gateway',
                         style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800),
                       ),
                     ),
@@ -582,21 +582,21 @@ class _MockCheckoutSheetState extends State<_MockCheckoutSheet> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Estas pagando ${widget.product.name} por \$${widget.product.price.toStringAsFixed(0)} COP.',
+                  'You are paying ${widget.product.name} for \$${widget.product.price.toStringAsFixed(0)} COP.',
                   style: const TextStyle(color: AppColorsView.textMuted),
                 ),
                 const SizedBox(height: 20),
                 DropdownButtonFormField<String>(
                   value: _paymentMethod,
-                  decoration: _inputDecoration('Metodo de pago'),
+                  decoration: _inputDecoration('Payment Method'),
                   items: const [
                     DropdownMenuItem(
-                      value: 'Tarjeta de credito',
-                      child: Text('Tarjeta de credito'),
+                      value: 'Credit Card',
+                      child: Text('Credit Card'),
                     ),
                     DropdownMenuItem(
-                      value: 'Tarjeta debito',
-                      child: Text('Tarjeta debito'),
+                      value: 'Debit Card',
+                      child: Text('Debit Card'),
                     ),
                     DropdownMenuItem(
                       value: 'PSE mock',
@@ -611,10 +611,10 @@ class _MockCheckoutSheetState extends State<_MockCheckoutSheet> {
                 const SizedBox(height: 12),
                 TextFormField(
                   controller: _nameController,
-                  decoration: _inputDecoration('Titular'),
+                  decoration: _inputDecoration('Holder'),
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
-                      return 'Ingresa el titular.';
+                      return 'Please enter the holder name.';
                     }
                     return null;
                   },
@@ -623,11 +623,11 @@ class _MockCheckoutSheetState extends State<_MockCheckoutSheet> {
                 TextFormField(
                   controller: _cardController,
                   keyboardType: TextInputType.number,
-                  decoration: _inputDecoration('Numero de tarjeta mock'),
+                  decoration: _inputDecoration('Card Number'),
                   validator: (value) {
                     final digits = value?.replaceAll(RegExp(r'\D'), '') ?? '';
                     if (digits.length < 16) {
-                      return 'Ingresa 16 digitos.';
+                      return 'Please enter 16 digits.';
                     }
                     return null;
                   },
@@ -642,7 +642,7 @@ class _MockCheckoutSheetState extends State<_MockCheckoutSheet> {
                         decoration: _inputDecoration('MM/AA'),
                         validator: (value) {
                           if (value == null || !RegExp(r'^\d{2}/\d{2}$').hasMatch(value.trim())) {
-                            return 'Formato invalido';
+                            return 'Invalid format';
                           }
                           return null;
                         },
@@ -657,7 +657,7 @@ class _MockCheckoutSheetState extends State<_MockCheckoutSheet> {
                         obscureText: true,
                         validator: (value) {
                           if (value == null || !RegExp(r'^\d{3,4}$').hasMatch(value.trim())) {
-                            return 'CVV invalido';
+                            return 'Invalid CVV';
                           }
                           return null;
                         },
@@ -668,14 +668,14 @@ class _MockCheckoutSheetState extends State<_MockCheckoutSheet> {
                 const SizedBox(height: 12),
                 DropdownButtonFormField<int>(
                   value: _installments,
-                  decoration: _inputDecoration('Cuotas'),
+                  decoration: _inputDecoration('Installments'),
                   items: List<DropdownMenuItem<int>>.generate(
                     6,
                     (index) {
                       final installments = index + 1;
                       return DropdownMenuItem(
                         value: installments,
-                        child: Text('$installments ${installments == 1 ? 'cuota' : 'cuotas'}'),
+                        child: Text('$installments ${installments == 1 ? 'installment' : 'installments'}'),
                       );
                     },
                   ),
@@ -693,7 +693,7 @@ class _MockCheckoutSheetState extends State<_MockCheckoutSheet> {
                     borderRadius: BorderRadius.circular(18),
                   ),
                   child: const Text(
-                    'Tarjeta mock de prueba: usa cualquier numero valido de 16 digitos. Si termina en 0000, el pago se rechaza.',
+                    'Mock card test: use any valid 16-digit number. If it ends in 0000, the payment will be rejected.',
                     style: TextStyle(fontSize: 12, color: AppColorsView.textMuted),
                   ),
                 ),
@@ -703,7 +703,7 @@ class _MockCheckoutSheetState extends State<_MockCheckoutSheet> {
                   child: ElevatedButton.icon(
                     onPressed: _submit,
                     icon: const Icon(Icons.lock_rounded),
-                    label: const Text('Autorizar pago mock'),
+                    label: const Text('Authorize mock payment'),
                   ),
                 ),
               ],

@@ -33,7 +33,7 @@ class _DropoffMapViewState extends State<DropoffMapView> {
         final points = snapshot.data!;
         if (points.isEmpty) {
           return const AsyncStateView(
-            message: 'No hay puntos de entrega disponibles.',
+            message: 'There are no delivery points available.',
           );
         }
         final selectedPoint = points.firstWhere(

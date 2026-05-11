@@ -73,7 +73,7 @@ class _ProfileViewState extends State<ProfileView> {
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text('No hay ajustes adicionales disponibles.'),
+                            content: Text('No additional settings available.'),
                           ),
                         );
                       },

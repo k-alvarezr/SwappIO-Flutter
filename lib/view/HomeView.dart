@@ -145,7 +145,7 @@ class _HomeViewState extends State<HomeView> {
                       IconButton(
                         onPressed: () {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('No tienes notificaciones nuevas.')),
+                            const SnackBar(content: Text('You have no new notifications.')),
                           );
                         },
                         icon: const Icon(Icons.notifications_none_rounded),

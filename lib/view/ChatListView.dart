@@ -41,9 +41,9 @@ class ChatListView extends StatelessWidget {
             .where((chat) => now.difference(chat.lastMessageTimestamp).inDays >= 1)
             .toList();
         final items = <_ChatListItem>[
-          if (recentChats.isNotEmpty) const _ChatListItem.header('Recientes'),
+          if (recentChats.isNotEmpty) const _ChatListItem.header('Recent'),
           ...recentChats.map(_ChatListItem.chat),
-          if (olderChats.isNotEmpty) const _ChatListItem.header('Anteriores'),
+          if (olderChats.isNotEmpty) const _ChatListItem.header('Previous'),
           ...olderChats.map(_ChatListItem.chat),
         ];
 
@@ -65,7 +65,7 @@ class ChatListView extends StatelessWidget {
                         ),
                         const Expanded(
                           child: Text(
-                            'Mensajes',
+                            'Messages',
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
                           ),
@@ -74,7 +74,7 @@ class ChatListView extends StatelessWidget {
                           onPressed: () {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                content: Text('No tienes notificaciones nuevas.'),
+                                content: Text('You have no new notifications.'),
                               ),
                             );
                           },
@@ -85,7 +85,7 @@ class ChatListView extends StatelessWidget {
                     const SizedBox(height: 12),
                     const TextField(
                       decoration: InputDecoration(
-                        hintText: 'Buscar conversaciones...',
+                        hintText: 'Search conversations...',
                         prefixIcon: Icon(Icons.search_rounded),
                       ),
                     ),
@@ -94,7 +94,7 @@ class ChatListView extends StatelessWidget {
               ),
               Expanded(
                 child: chats.isEmpty
-                    ? const Center(child: Text('No tienes mensajes aun.'))
+                    ? const Center(child: Text('You have no messages yet.'))
                     : ListView.builder(
                         padding: const EdgeInsets.fromLTRB(16, 0, 16, 110),
                         itemCount: items.length,
@@ -166,7 +166,7 @@ class _ChatCard extends StatelessWidget {
       (id) => id != currentUserId,
       orElse: () => currentUserId,
     );
-    final otherName = chat.participantNames[otherUserId] ?? 'Usuario';
+    final otherName = chat.participantNames[otherUserId] ?? 'User';
 
     return InkWell(
       onTap: onTap,
@@ -253,17 +253,17 @@ class _ChatCard extends StatelessWidget {
       return _timeString(timestamp);
     }
     if (DateUtils.isSameDay(now.subtract(const Duration(days: 1)), timestamp)) {
-      return 'Ayer';
+      return 'Yesterday';
     }
     if (now.difference(timestamp).inDays < 7) {
       const weekdays = [
-        'Lunes',
-        'Martes',
-        'Miercoles',
-        'Jueves',
-        'Viernes',
-        'Sabado',
-        'Domingo',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
       ];
       return weekdays[timestamp.weekday - 1];
     }

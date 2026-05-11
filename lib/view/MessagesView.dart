@@ -10,8 +10,8 @@ class MessagesView extends StatelessWidget {
       appBar: AppBar(title: const Text("Mensajes")),
       body: ListView(
         children: const [
-          ListTile(title: Text("Camila"), subtitle: Text("Hola")),
-          ListTile(title: Text("Diego"), subtitle: Text("Oferta")),
+          ListTile(title: Text("Camila"), subtitle: Text("Hello")),
+          ListTile(title: Text("Diego"), subtitle: Text("Offer")),
         ],
       ),
       bottomNavigationBar: const BottomNavView(index: 3),

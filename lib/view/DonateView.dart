@@ -123,7 +123,7 @@ class _DonateViewState extends State<DonateView> {
                         onPressed: () {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
-                              content: Text('No hay filtros avanzados adicionales por ahora.'),
+                              content: Text('There are no additional advanced filters at the moment.'),
                             ),
                           );
                         },
@@ -206,7 +206,7 @@ class _DonateViewState extends State<DonateView> {
                     child: Padding(
                       padding: EdgeInsets.only(top: 24),
                       child: Center(
-                        child: Text('No hay fundaciones para mostrar con este filtro.'),
+                        child: Text('There are no charities to display with this filter.'),
                       ),
                     ),
                   )
