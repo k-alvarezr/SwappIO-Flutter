@@ -61,7 +61,7 @@ class _ChatDetailViewState extends State<ChatDetailView> {
           (id) => id != currentUser.id,
           orElse: () => currentUser.id,
         );
-        final otherUserName = chat.participantNames[otherUserId] ?? 'Usuario';
+        final otherUserName = chat.participantNames[otherUserId] ?? 'User';
 
         return Scaffold(
           backgroundColor: const Color(0xFFF5F8F8),
@@ -96,7 +96,7 @@ class _ChatDetailViewState extends State<ChatDetailView> {
                                   ),
                                 ),
                                 const Text(
-                                  'Activo ahora',
+                                  'Active now',
                                   style: TextStyle(
                                     fontSize: 10,
                                     color: AppColorsView.accent,
@@ -110,7 +110,7 @@ class _ChatDetailViewState extends State<ChatDetailView> {
                             onPressed: () {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                  content: Text('No hay acciones adicionales en este chat.'),
+                                  content: Text('There are no additional actions for this chat.'),
                                 ),
                               );
                             },
@@ -164,7 +164,7 @@ class _ChatDetailViewState extends State<ChatDetailView> {
                                 AppRoutesView.productDetail,
                                 arguments: chat.relatedProductId!,
                               ),
-                              child: const Text('Ver detalle'),
+                              child: const Text('View Details'),
                             ),
                           ],
                         ),
@@ -251,7 +251,7 @@ class _ChatDetailViewState extends State<ChatDetailView> {
                           onPressed: () {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                content: Text('Adjuntar archivos aun no esta disponible.'),
+                                content: Text('Attaching files is not available yet.'),
                               ),
                             );
                           },
@@ -262,7 +262,7 @@ class _ChatDetailViewState extends State<ChatDetailView> {
                             controller: _controller,
                             onChanged: (_) => setState(() {}),
                             decoration: const InputDecoration(
-                              hintText: 'Escribe un mensaje...',
+                              hintText: 'Write a message...',
                               border: InputBorder.none,
                               filled: false,
                             ),

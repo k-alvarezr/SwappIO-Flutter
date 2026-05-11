@@ -127,7 +127,7 @@ class _AddProductViewState extends State<AddProductView> {
       );
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Publicacion creada correctamente.')),
+        const SnackBar(content: Text('Post created successfully.')),
       );
       Navigator.of(context).pushNamedAndRemoveUntil(
         AppRoutesView.home,
@@ -183,15 +183,15 @@ class _AddProductViewState extends State<AddProductView> {
       builder: (dialogContext) => AlertDialog(
         title: const Text('Como publicar'),
         content: const Text(
-          '1. Agrega al menos una foto.\n'
-          '2. Completa titulo, precio, descripcion y ubicacion.\n'
-          '3. Toca el mapa para fijar la ubicacion.\n'
-          '4. Publica el item y vuelve al inicio automaticamente.',
+          '1. Add at least one photo.\n'
+          '2. Complete the title, price, description, and location.\n'
+          '3. Tap the map to set the location.\n'
+          '4. Publish the item and return to the home screen automatically.',
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(dialogContext).pop(),
-            child: const Text('Entendido'),
+            child: const Text('Understood'),
           ),
         ],
       ),
@@ -478,7 +478,7 @@ class _AddProductViewState extends State<AddProductView> {
                                   OutlinedButton.icon(
                                     onPressed: _getCurrentLocation,
                                     icon: const Icon(Icons.my_location),
-                                    label: const Text('Usar mi ubicación actual'),
+                                    label: const Text('Use my current location'),
                                     style: OutlinedButton.styleFrom(
                                       minimumSize: const Size(double.infinity, 45),
                                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

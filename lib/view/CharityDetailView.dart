@@ -40,7 +40,7 @@ class _CharityDetailViewState extends State<CharityDetailView> {
           .where((product) => product.status == ProductStatus.available)
           .toList();
       if (availableProducts.isEmpty) {
-        _showMessage('No tienes publicaciones activas para donar.', isError: true);
+        _showMessage("You don't have any available listings to donate.", isError: true);
         return;
       }
 
@@ -52,7 +52,7 @@ class _CharityDetailViewState extends State<CharityDetailView> {
             children: [
               const ListTile(
                 title: Text(
-                  'Selecciona una prenda',
+                  'Select a piece of clothing',
                   style: TextStyle(fontWeight: FontWeight.w700),
                 ),
               ),
@@ -75,7 +75,7 @@ class _CharityDetailViewState extends State<CharityDetailView> {
         charityId: charity.id,
       );
       if (!mounted) return;
-      _showMessage('Donacion registrada correctamente.');
+      _showMessage('Donation registered successfully.');
     } catch (error) {
       if (!mounted) return;
       _showMessage(
@@ -116,7 +116,7 @@ class _CharityDetailViewState extends State<CharityDetailView> {
                         child: Text('Charity Details', textAlign: TextAlign.center, style: TextStyle(fontSize: 19, fontWeight: FontWeight.w700)),
                       ),
                       IconButton(
-                        onPressed: () => _showMessage('No hay ajustes adicionales para esta fundacion.'),
+                        onPressed: () => _showMessage("There are no additional settings for this charity."),
                         icon: const Icon(Icons.settings_outlined),
                       ),
                     ],

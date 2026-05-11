@@ -97,7 +97,7 @@ class _ActivityViewState extends State<ActivityView> {
             const SizedBox(height: 16),
             Expanded(
               child: products.isEmpty
-                  ? const Center(child: Text('Aún no tienes elementos aquí.'))
+                  ? const Center(child: Text("You don't have any items here yet."))
                   : GridView.builder(
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
